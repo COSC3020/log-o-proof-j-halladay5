@@ -13,15 +13,39 @@ might help with the notation for mathematical expressions.
 
 Definintion of O: $T(n) \in O(f(n)) \iff \exists c, n_0: T(n) \leq c \cdot f(n), \forall n \geq n_0$
 
-Substitute $\ T(n) = log_{5} n : \exists c, n_0: log_{5} n \leq c \cdot f(n), \forall n \geq n_0$
+Substitute $\ f(n) = log_{2} n : T(n) \in O(log_{2} n) \iff \exists c, n_0: T(n) \leq c \cdot log_{2} n ,\forall n \geq n_0$
 
-Substitute $\ f(n) = log_{2} n : \exists c, n_0: log_{5} n \leq c \cdot log_{2} n ,\forall n \geq n_0$
+Change of base formula: $\ log_{b} a = \frac{log_{c} a}{log_{c} b} $
 
-Plug in c = $\\frac{1}{log_{2} 5},  n_0 = 1 : log_{5} n \leq \frac{1}{log_{2} 5} \cdot log_{2} n ,\forall n \leq 1$
+Split $\ log_{2} n $ to find constant needed for change of base to base 5: $\ log_{2} n = \frac{log_{5} n}{log_{5} 2} $
 
-Log base change formula : $\ log_{5} n \leq log_{5} n ,\forall n \leq 1$
+Plug in constant : $\ T(n) \in O(log_{2} n) \iff \exists c, n_0 : T(n) \leq c \cdot (\frac{1}{log_{5} 2}) \cdot log_{5} n , \forall n \geq n_0 $
 
-True by mathematical reasoning : $\log_{5} n = log_{5} n ,\forall n \geq 1$
+$\ \frac{c}{a constant}$ is still a constant. Change $\ \frac{c}{log_{5} 2} to \ c_1 $
+
+$\ T(n) \in O(log_{2} n) \iff \exists c_1, n_0: T(n) \leq c_1 \cdot log_{5} n, \forall n\geq n_0 $.
+
+Therefore by O definition, $\ T(n) \in O(log_{2} n) \implies T(n) \in O(log_{5} n) $
+
+Implies only works one way, so we need to prove that $\ T(n) \in O(log_{5} n) \implies T(n) \in O(log_{2} n)$
+
+Definintion of O: $T(n) \in O(f(n)) \iff \exists c, n_0: T(n) \leq c \cdot f(n), \forall n \geq n_0$
+
+Substitute $\ f(n) = log_{5} n : T(n) \in O(log_{5} n) \iff \exists c, n_0: T(n) \leq c \cdot log_{5} n ,\forall n \geq n_0$
+
+Change of base formula: $\ log_{b} a = \frac{log_{c} a}{log_{c} b} $
+
+Split $\ log_{5} n $ to find constant needed for change of base to base 2: $\ log_{5} n = \frac{log_{2} n}{log_{2} 5} $
+
+Plug in constant : $\ T(n) \in O(log_{5} n) \iff \exists c, n_0 : T(n) \leq c \cdot (\frac{1}{log_{2} 5}) \cdot log_{2} n , \forall n \geq n_0 $
+
+$\ \frac{c}{a constant}$ is still a constant. Change $\ \frac{c}{log_{2} 5} to \ c_2 $
+
+$\ T(n) \in O(log_{5} n) \iff \exists c_2, n_0: T(n) \leq c_2 \cdot log_{2} n, \forall n\geq n_0 $.
+
+Therefore by O definition, $\ T(n) \in O(log_{5} n) \implies T(n) \in O(log_{2} n) $
+
+If $\ T(n) \in O(log_{2} n) \iff T(n) \in O(log_{5} n) $
 
 In O, log bases do not matter because they are related by a constant factor. Using the base change formula, you can easily change the base of a logarithm and find that constant.
-In O analysis we disregard constant factors, so they are the same thing. 
+In O analysis we disregard constant factors, so they are the same thing. If all functions in T(n) are in $\ log_{2} n$ and all functions in T(n) are in $\ log_{5} n $, then $\ log_{2} n = log_{5} n$
